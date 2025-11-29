@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm, natural color palette */
+    --background: 42 45% 98%;
+    --foreground: 220 15% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 20%;
+    --primary: 262 52% 47%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 38 92% 50%;
+    --secondary-foreground: 220 15% 20%;
+    --muted: 42 30% 95%;
+    --muted-foreground: 220 10% 45%;
+    --accent: 168 76% 42%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 42 20% 88%;
+    --input: 42 20% 92%;
+    --ring: 262 52% 47%;
+    --radius: 0.75rem;
+  }
+ 
+  .dark {
+    --background: 220 18% 12%;
+    --foreground: 42 45% 96%;
+    --card: 220 16% 16%;
+    --card-foreground: 42 45% 96%;
+    --popover: 220 16% 16%;
+    --popover-foreground: 42 45% 96%;
+    --primary: 262 60% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 38 92% 55%;
+    --secondary-foreground: 220 18% 12%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 42 20% 65%;
+    --accent: 168 70% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 15% 24%;
+    --input: 220 15% 24%;
+    --ring: 262 60% 60%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  input, textarea, select, button {
+    @apply outline-none focus:outline-none;
+  }
+
+  /* Smooth transitions for human feel */
+  * {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer utilities {
+  /* Spotlight animation */
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%,-40%) scale(1);
+    }
+  }
+  
+  .animate-spotlight {
+    animation: spotlight 2s ease .75s 1 forwards;
+  }
+  
+  /* Loading spinner */
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF3;
+    border-bottom-color: #FFF;
+    border-radius: 50%;
+    display: inline-block;
+    animation: rotation 1s linear infinite;
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Custom shadow utilities */
+  .shadow-soft {
+    box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  }
+
+  .shadow-soft-lg {
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1), 0 20px 25px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Better text rendering */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
